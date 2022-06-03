@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* h2{}
+        #title{}
+        .main-title{}
+        .box .main-title{} */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        form{
+            width: 300px;
+        }
+        input{
+            display: block;
+            width: 100%;
+            height: 35px;
+            margin: 8px 0;
+            border: 1px solid orange;
+        }
+        button{
+            width: 100%;
+            background-color: orange;
+            border: none;
+            color: white;
+            height: 40px;
+        }
+        .show-error{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <p id="title" class="main-title">Tiêu đề</p>
+    </div>
+    <p class="main-title">Nội dung</p>
+    <img src="" alt=""> -->
+
+    <!-- <form action="">
+        <input type="text" placeholder="Quantity" id="quantity">
+        <button type="submit" onclick="alert('Hello')">Get Quantity</button>
+        <button type="submit" id="btn-get">Get Quantity</button>
+    </form> -->
+
+    <div class="show-error"></div>
+    <form action="">
+        <label for="">Username</label>
+        <input type="text" placeholder="Username" id="username">
+        <label for="">Password</label>
+        <input type="text" placeholder="Password" id="password">
+        <button type="submit" id="btn-login">Login now</button>
+    </form>
+    <script src="./main.js"></script>
+</body>
+</html>

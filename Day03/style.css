@@ -1,0 +1,50 @@
+.banner{
+    height: 300px;
+    background-color: orange;
+}
+.col{
+    border: 1px solid black;
+    height: 300px;
+}
+
+@media (min-width:768px){
+    .banner{
+        height: 300px;
+        background-color: green;
+    }
+    .col{
+        border: 1px solid black;
+        height: 300px;
+    }
+    .news{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (min-width:1024px){
+    .banner{
+        height: 300px;
+        background-color: pink;
+    }
+    .col{
+        border: 1px solid black;
+        height: 300px;
+    }
+    .news{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+@media (min-width:1280px){
+    .news{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+        grid-gap: 32px;
+        margin: 32px 0;
+    }
+    .col{
+        border: 1px solid black;
+        height: 300px;
+    }
+}
