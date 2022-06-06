@@ -83,23 +83,26 @@ const ListCategory = [
 
 function showProduct(data){ //khai báo hàm, truyền vào tham số data để cần hiển thị mảng nào thì truyền vào mảng đó
     const popularList = document.querySelector(".popular-list") //tìm thẻ div có class popular-list
-    popularList.innerHTML = "" //clear khối sản phẩm đi để hiển thị lại dữ liệu mới
-    for(let item of data){ // lặp qua mảng truyền vào tham số data
+    if(popularList){
+        popularList.innerHTML = "" //clear khối sản phẩm đi để hiển thị lại dữ liệu mới
+        for(let item of data){ // lặp qua mảng truyền vào tham số data
 
-        // đổ dữ liệu vào trong thẻ div popular
-        popularList.innerHTML += `
-            <div class="popular__item">
-                <a href=""><img src="${item.image}" alt=""></a>
-                <h3><a href="">${item.name}</a></h3>
-                <p>
-                    <img src="./image/home/Timer.png" alt="">
-                    <span>30 Minutes</span>
-                    <img src="./image/home/ForkKnife.png" alt="">
-                    <span>Snack</span>
-                </p>
-            </div>
-        `         
+            // đổ dữ liệu vào trong thẻ div popular
+            popularList.innerHTML += `
+                <div class="popular__item">
+                    <a href="./detail.html?id=${item.id}"><img src="${item.image}" alt=""></a>
+                    <h3><a href="./detail.html?id=${item.id}">${item.name}</a></h3>
+                    <p>
+                        <img src="./image/home/Timer.png" alt="">
+                        <span>30 Minutes</span>
+                        <img src="./image/home/ForkKnife.png" alt="">
+                        <span>Snack</span>
+                    </p>
+                </div>
+            `         
+        }
     }
+    
 }
 showProduct(ListProduct) //gọi hàm ra để hiển thị sản phẩm
 
@@ -123,4 +126,32 @@ function filterProduct(){ //tạo hàm để thực hiện chức năng lọc
 
     }
 }
-filterSelect.addEventListener("change",filterProduct)
+if(filterSelect){
+    filterSelect.addEventListener("change",filterProduct)
+}
+
+
+function detailProduct(){
+    const prdId = new URLSearchParams(window.location.search).get('id')
+    // console.log(prdId);
+    const product = ListProduct.find(function(item){
+        return item.id == prdId
+    })
+    
+    const detailProductDiv = document.querySelector('.detail-product')
+    detailProductDiv.innerHTML = `
+        <div class="product-info">
+            <h2>${product.name}</h2>
+            <p class="price">$ ${product.price}</p>
+            <p class="desc">${product.desc}</p>
+            <form action="">
+                <input type="text" placeholder="Quantity">
+                <button type="submit">Add To Cart</button>
+            </form>
+        </div>
+        <div class="product-img">
+            <img src="${product.image}" alt="">
+        </div>
+    `
+}
+detailProduct()
