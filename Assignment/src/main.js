@@ -28,7 +28,7 @@ const ListProduct = [
         name:"Fresh and Healthy Mixed Mayonnaise ",
         price:50,
         desc:"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-        image:"./image/home/popular-item-2.png",
+        image:"./image/home/popular-item-1.png",
         category: 4
     },
     {
@@ -44,7 +44,7 @@ const ListProduct = [
         name:"Fruity Pancake with Orange & Blueberry",
         price:15,
         desc:"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-        image:"./image/home/popular-item-1.png",
+        image:"./image/home/popular-item-3.png",
         category: 6
     }
 ]
@@ -81,11 +81,12 @@ const ListCategory = [
     }
 ]
 
-function showProduct(data){
-    const popularList = document.querySelector(".popular-list")
-    popularList.innerHTML = ""
-    for(let item of data){
-        // console.log(item);
+function showProduct(data){ //khai báo hàm, truyền vào tham số data để cần hiển thị mảng nào thì truyền vào mảng đó
+    const popularList = document.querySelector(".popular-list") //tìm thẻ div có class popular-list
+    popularList.innerHTML = "" //clear khối sản phẩm đi để hiển thị lại dữ liệu mới
+    for(let item of data){ // lặp qua mảng truyền vào tham số data
+
+        // đổ dữ liệu vào trong thẻ div popular
         popularList.innerHTML += `
             <div class="popular__item">
                 <a href=""><img src="${item.image}" alt=""></a>
@@ -97,24 +98,29 @@ function showProduct(data){
                     <span>Snack</span>
                 </p>
             </div>
-        `
+        `         
     }
 }
-showProduct(ListProduct)
+showProduct(ListProduct) //gọi hàm ra để hiển thị sản phẩm
 
-const filterSelect = document.querySelector("#filter-select")
-function filterProduct(){
-    const under30 = ListProduct.filter(function(product){
-        return product.price < 30
+const filterSelect = document.querySelector("#filter-select") // tìm thẻ select
+function filterProduct(){ //tạo hàm để thực hiện chức năng lọc 
+    const over30 = ListProduct.filter(function(item){
+        // khai báo biến over30 chứa dữ liệu lọc được từ mảng ListProduct
+        return item.price > 30 
+        // return về điều kiện để lọc
     })
-    if(filterSelect.value == 'under30'){
-        showProduct(under30)
+    const under30 = ListProduct.filter(function(item){
+        return item.price <= 30
+    })
+    if(filterSelect.value == 'over30'){ //kiểm tra xem đang chọn vào option nào trong thẻ select
+        showProduct(over30) // gọi hàm ra và truyền vào mảng lấy được bên trên để hiển thị sản phẩm tương ứng
     }
-    if(filterSelect.value == 'over30'){
+    if(filterSelect.value == 'under30'){
 
     }
     if(filterSelect.value == 'all'){
-        
+
     }
 }
 filterSelect.addEventListener("change",filterProduct)
