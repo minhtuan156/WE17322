@@ -209,3 +209,8 @@ footer{
     padding: 32px 0;
     margin-top: 96px;
 }
+
+/* ---------------- responsive ------------------- */
+@media screen { 
+    max-width: 768px ;
+}
